@@ -1,0 +1,21 @@
+# 作業系統雜訊檔案
+.DS_Store
+Thumbs.db
+
+# 打包產物,不需要進repo
+*.zip
+
+# 若之後在state/裡放了有實際內容的版本(含真實專題的商業/技術細節)，建議改用 *.local.md 或另外的檔名放實際內容，並在此排除，只保留空白範本
+state/project_context.local.md
+state/project_state.local.md
+
+# SA時的範例參考文件docx
+# skill包裡保留這兩份供排版參考，但不隨public repo公開
+templates/
+
+# 歷屆優秀範例參考，版權/隱私屬於原作團隊,不上傳public repo
+examples/
+
+# 編輯器/IDE雜訊
+.vscode/
+.idea/
