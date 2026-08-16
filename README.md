@@ -1,5 +1,7 @@
 # Graduation Project Spec Writer (fju-im-spec-writer)
 
+🇬🇧 [English](README.md) | 🇹🇼 繁體中文
+
 FJU IM Spec Writer — An Agent Skill for Claude that generates and edits a capstone-project specification document ("SA document") following the requirements of a Systems Analysis & Design course at the Department of Information Management, Fu Jen Catholic University.
 
 > **Note**: This skill helps with structure and formatting. It does **not** fabricate project content (survey data, interview results, system logic) — you still need to supply or confirm all substantive content. The skill's job is to organize what you provide into the correct format, and to flag "needs confirmation" when information is missing.
