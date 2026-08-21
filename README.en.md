@@ -18,7 +18,7 @@ FJU IM Spec Writer — An Agent Skill for Claude that generates and edits a caps
 ```
 fju-im-spec-writer/
 ├── SKILL.md
-├── README.md / README.zh-TW.md
+├── README.md / README.en.md
 ├── LICENSE
 ├── CHANGELOG.md
 ├── templates/
@@ -30,6 +30,7 @@ fju-im-spec-writer/
 │   ├── database_design_rules.md
 │   ├── format_pattern_guide.md
 │   ├── document_formatting.md
+│   ├── content_synthesis_guide.md # per-section source priority & extracted teacher preferences
 │   └── review_checklist.md
 ├── examples/
 └── state/
@@ -50,6 +51,15 @@ Available on Free, Pro, Max, Team, and Enterprise plans. Personal uploads are pr
 
 The rules here are extracted from one specific instructor's course requirements. If you're not in this course, the rules won't apply directly — but you can reuse the skeleton (SKILL.md + reference + templates + state) and swap in your own instructor's requirements.
 
+## Acknowledgements & References
+
+Parts of this skill's design were inspired by two open-source projects (both MIT licensed):
+
+- **[obra/superpowers](https://github.com/obra/superpowers)** (MIT License) — inspired the "clarify before you write" (brainstorming) and "small-unit generate-then-verify" (TDD-style red-green loop) workflow design
+- **[mattpocock/skills](https://github.com/mattpocock/skills)** (MIT License) — inspired the "one-time deep interview, then reuse the context long-term" pattern (`grill-with-docs`), reflected here in `state/project_context.md`
+
+No code or file content was copied directly from either project; only the design concepts were referenced and independently reimplemented for a different domain (academic spec-document generation vs. software engineering workflows).
+
 ## License
 
-Personal use, see LICENSE. Template files under `templates/` belong to the original course/authors — confirm you have rights to share before publishing publicly.
+This skill's original content (SKILL.md, reference/, README, etc.) is licensed under MIT — see LICENSE. Template files (`templates/`) and past examples (`examples/`) belong to the original course/authors and are not covered by this license — see the note at the bottom of LICENSE and `.gitignore`.

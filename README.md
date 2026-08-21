@@ -20,7 +20,7 @@
 ```
 fju-im-spec-writer/
 ├── SKILL.md                      # 核心邏輯(觸發時機、流程、規則)
-├── README.md / README.zh-TW.md   # 說明文件
+├── README.md / README.en.md      # 說明文件
 ├── LICENSE
 ├── CHANGELOG.md
 ├── templates/
@@ -32,6 +32,7 @@ fju-im-spec-writer/
 │   ├── database_design_rules.md  # 資料庫設計正規化規範
 │   ├── format_pattern_guide.md   # 段落該用文字/表格/條列的對照表
 │   ├── document_formatting.md    # 字型/字級/頁碼/目錄等文件層級格式(從範本XML解析)
+│   ├── content_synthesis_guide.md # 逐段落來源優先策略與老師隱性偏好分析
 │   └── review_checklist.md       # 生成後品質自我檢查清單
 ├── examples/
 │   └── (可放匿名化的範例輸出;若有透過指導教授取得的歷屆優秀範例,建議如111/114範本一樣排除於public repo外,見.gitignore)
@@ -57,6 +58,15 @@ fju-im-spec-writer/
 
 見 CHANGELOG.md
 
+## 致謝與參考
+
+這個skill的部分設計思路參考自以下兩個開源專案(皆為MIT授權),特此致謝:
+
+- **[obra/superpowers](https://github.com/obra/superpowers)**(MIT License)——啟發了「動手寫之前先透過提問把資訊釐清」(brainstorming)與「小單位反覆生成→驗證,不累積錯誤」(TDD式紅燈綠燈循環)的工作流程設計
+- **[mattpocock/skills](https://github.com/mattpocock/skills)**(MIT License)——啟發了「一次性深度訪談、建立長期沿用的背景知識庫」(`grill-with-docs`)的設計,對應本skill的`state/project_context.md`機制
+
+本skill沒有直接複製這兩個專案的程式碼或檔案內容,僅參考其設計理念並重新實作於完全不同的應用領域(學術規格書生成 vs 軟體工程開發流程)。
+
 ## 授權
 
-個人學習使用，見 LICENSE，範本文件(templates/及examples/)內容版權屬於原課程與範例文件作者
+本skill(SKILL.md、reference/、README等原創內容)採MIT License,見 LICENSE。範本文件(templates/)與歷屆範例(examples/)版權屬於原課程與範例文件作者,不隨此授權開放,詳見 LICENSE 底部說明與 `.gitignore`。

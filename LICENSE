@@ -22,3 +22,13 @@ SOFTWARE.
 Note: Template files under templates/ (111_SA.docx, 114_SA.docx) are
 course materials from the original instructor and are NOT covered by this
 license. Confirm rights before redistributing them.
+
+Note: The reference example under examples/ (Beaton_音樂祭平台_參考範例.pdf)
+is another team's real capstone project, obtained via a faculty advisor.
+It is likewise NOT covered by this license and is excluded from the public
+repository via .gitignore.
+
+This project's design was partly inspired by obra/superpowers
+(https://github.com/obra/superpowers, MIT License) and mattpocock/skills
+(https://github.com/mattpocock/skills, MIT License). No code was copied from
+either project; only design concepts were referenced. See README for details.
