@@ -5,16 +5,21 @@ Thumbs.db
 # 打包產物,不需要進repo
 *.zip
 
-# 若之後在state/裡放了有實際內容的版本(含真實專題的商業/技術細節)，建議改用 *.local.md 或另外的檔名放實際內容，並在此排除，只保留空白範本
+# 若之後在state/裡放了「有實際內容」的版本(含你們真實專題的商業/技術細節),
+# 建議改用 *.local.md 或另外的檔名放實際內容,並在此排除,只保留空白範本
 state/project_context.local.md
 state/project_state.local.md
 
-# SA時的範例參考文件docx
-# skill包裡保留這兩份供排版參考，但不隨public repo公開
-templates/
+# 老師的官方範本docx(課程教材,非自己原創,公開前應先取得授課教師同意)
+# skill包裡保留這兩份供Claude排版參考,但不隨public repo公開
+templates/111_SA.docx
+templates/114_SA.docx
 
-# 歷屆優秀範例參考，版權/隱私屬於原作團隊,不上傳public repo
-examples/
+# 歷屆優秀範例(非自己原創,透過指導教授取得,不公開分享)
+# 這份檔案在skill包裡有實際內容,幫助Claude對照真實案例生成內容,
+# 但版權/隱私屬於原作團隊,不上傳public repo
+examples/*.pdf
+examples/*.docx
 
 # 編輯器/IDE雜訊
 .vscode/
