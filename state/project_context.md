@@ -57,7 +57,7 @@
 
 ## 技術規劃
 
-- 資料庫:{待填,如MySQL/Firestore/Supabase}
+- 資料庫:{待填,如MySQL/PostgreSQL(含託管服務如Supabase)/Firestore/SQLite等——**這個欄位務必填寫具體且準確,生成資料庫設計章節時會直接依此欄位決定型態欄位的語法(如PostgreSQL用SERIAL/BOOLEAN/TIMESTAMP,MySQL用AUTO_INCREMENT/TINYINT(1)/DATETIME),填錯或含糊會導致文件跟實際系統語法不符**}
 - 開發環境/技術棧:{待填}
 - 部署方式:{待填}
 

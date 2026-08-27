@@ -1,6 +1,13 @@
 # 資料庫設計規範
 
-來源: 使用者提供之資料庫設計準則(補充老師規範中「資料庫設計」章節的細節)
+## ⚠️ 生成前必須確認的事:實際使用的資料庫種類
+
+**這是資料庫設計章節生成前的強制檢查步驟,優先於本文件其他所有內容。**
+
+1. **先讀 `state/project_context.md` 裡「技術規劃」欄位記錄的資料庫選型**(如PostgreSQL、MySQL、Firestore、SQLite等)
+2. **若該欄位是空的、標示「待填」、或從未被問過**,在動手寫任何一張資料表的型態欄位之前,**必須先問使用者**:「這個專題實際使用哪一種資料庫?(PostgreSQL / MySQL / SQLite / Firestore / 其他)」,得到明確答案後才能開始生成型態欄位內容,**不能預設任何一種資料庫的語法**,也不能照抄本文件或`style_guide.md`裡的範例字面語法(那些範例已改寫為語意中立版本,見下方對照表)
+3. **若`project_context.md`已經有明確記錄**(例如「PostgreSQL,透過Supabase託管」),生成內容時要**主動核對每個型態欄位是否符合該資料庫的實際語法規則**,不能不假思索地套用參考檔案裡殘留的舊語法。常見的資料庫間語法差異(如MySQL的`BIGINT(11)`顯示寬度語法、`TINYINT(1)`模擬布林、`AUTO_INCREMENT`;PostgreSQL沒有顯示寬度語法、有原生`BOOLEAN`、用`SERIAL`/`IDENTITY`)見本文件後段對照表,生成前先查表確認,不要混用不同資料庫的語法到同一份文件裡
+4. 若中途發現已經生成的表格用錯了資料庫語法(例如專題是PostgreSQL卻寫了MySQL語法),**主動告知使用者並提出修正**,不要等使用者自己發現才處理
 
 設計資料庫時,必須遵循一套系統化的規範、格式與規則,以確保資料的完整性、減少冗餘並提升系統效能。
 
@@ -49,15 +56,27 @@
 
 ## 與老師範本格式的對應
 
-老師範本的關連結構表格式為:編號 | 名稱 | 型態 | 說明,其中「說明」欄需標明PK/FK/AI/NN等屬性:
+⚠️ **重要:下方的欄位型態範例僅為「格式示意」,不代表任何特定資料庫的實際語法。生成資料庫設計章節前,務必先確認專題實際使用的資料庫種類(見本文件開頭「生成前必須確認的事」),再依該資料庫的真實語法填入型態欄位,不要照抄下方範例的字面語法。**
+
+老師範本的關連結構表格式為:編號 | 名稱 | 型態 | 說明,其中「說明」欄需標明PK/FK/NN等屬性:
 
 ```
 | 編號 | 名稱 | 型態 | 說明 |
 | --- | --- | --- | --- |
-| 1 | Id | BIGINT(11) | 編號 PK AI NN |
-| 2 | CustomerId | BIGINT(11) | 顧客編號 FK (Customer.Id) NN |
+| 1 | Id | {依實際資料庫的主鍵型態語法} | 編號 PK {依實際資料庫的自動遞增語法} NN |
+| 2 | CustomerId | {依實際資料庫的整數型態語法} | 顧客編號 FK (Customer.Id) NN |
 ```
 
-註解: PK=Primary Key、FK=Foreign Key、AI=Auto Increment、NN=Not Null
+註解:PK=Primary Key、FK=Foreign Key、NN=Not Null(此三項為通用縮寫,任何資料庫皆適用)。**「AI」(Auto Increment)是MySQL的慣用簡稱,不是通用縮寫**,PostgreSQL沒有這個語法,應寫`SERIAL`或`IDENTITY`;其他資料庫請依實際語法標註,不要照搬「AI」這個縮寫。
 
-生成資料庫設計章節時,應同時套用上述學術規範(正規化、命名一致性)與老師範本的表格格式。
+### 常見資料庫的型態語法對照(生成時依實際選型查表使用,不要預設任何一種)
+
+| 概念 | PostgreSQL | MySQL | SQLite |
+| --- | --- | --- | --- |
+| 主鍵自動遞增 | `SERIAL` / `BIGSERIAL`(或`IDENTITY`) | `INT`/`BIGINT` + `AUTO_INCREMENT` | `INTEGER PRIMARY KEY AUTOINCREMENT` |
+| 大整數 | `BIGINT` (無顯示寬度語法) | `BIGINT(11)`(可加顯示寬度,MySQL 8.0後已棄用顯示寬度但仍常見於舊範例) | `INTEGER` |
+| 布林值 | `BOOLEAN` | `TINYINT(1)`(MySQL無原生布林,慣用TINYINT(1)模擬) | `BOOLEAN`(內部仍存為INTEGER) |
+| 日期時間 | `TIMESTAMP` / `TIMESTAMPTZ`(建議帶時區) | `DATETIME` | `TEXT`/`NUMERIC`(依儲存慣例) |
+| 外鍵語法 | `REFERENCES 資料表(欄位)` | `FOREIGN KEY ... REFERENCES ...` | `REFERENCES 資料表(欄位)` |
+
+**這張表是給Claude查詢用的工具,不是要你把整張表塞進文件裡**——生成文件時,只依專題實際使用的那一種資料庫,把對應語法填進關連結構表格,不要把其他資料庫的語法也寫進去,也不要不假思索照抄`database_design_rules.md`裡舊有的`BIGINT(11)`、`AI`這類字面範例(那些是修正前遺留的MySQL寫法,若在生成過程中不小心看到舊版skill包裡殘留的範例文字,一律以本表為準重新核對)。
