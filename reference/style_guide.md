@@ -41,6 +41,8 @@
 
 ## 資料庫設計表格格式
 
+⚠️ **型態欄位的實際語法依專題使用的資料庫而定,先看`reference/database_design_rules.md`開頭的「生成前必須確認的事」再動手寫,不要照抄下方的字面範例(下方僅示意欄位排列格式,不代表實際語法)。**
+
 **關連一覽表:**
 ```
 | 編號 | 名稱 | 說明 |
@@ -54,11 +56,11 @@
 
 | 編號 | 名稱 | 型態 | 說明 |
 | --- | --- | --- | --- |
-| 1 | Id | BIGINT(11) | 編號 PK AI NN |
-| 2 | CategoryId | INT(11) | 類別編號 FK (Category.Id) NN |
+| 1 | Id | {依實際資料庫語法,例如PostgreSQL為BIGINT+IDENTITY,MySQL為BIGINT AUTO_INCREMENT} | 編號 PK NN |
+| 2 | CategoryId | {依實際資料庫的整數型態語法} | 類別編號 FK (Category.Id) NN |
 ```
 
-表後附註解:`PK:Primary Key`、`FK:Foreign Key`、`AI:Auto Increment`、`NN:Not Null`
+表後附註解:`PK:Primary Key`、`FK:Foreign Key`、`NN:Not Null`(通用縮寫,任何資料庫皆適用;自動遞增的語法本身因資料庫而異,不用「AI」這種MySQL專屬簡稱當通用縮寫)
 
 ## 介面藍圖格式
 
