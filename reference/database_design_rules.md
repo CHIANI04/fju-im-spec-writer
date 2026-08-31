@@ -71,12 +71,12 @@
 
 ### 常見資料庫的型態語法對照(生成時依實際選型查表使用,不要預設任何一種)
 
-| 概念 | PostgreSQL | MySQL | SQLite |
-| --- | --- | --- | --- |
-| 主鍵自動遞增 | `SERIAL` / `BIGSERIAL`(或`IDENTITY`) | `INT`/`BIGINT` + `AUTO_INCREMENT` | `INTEGER PRIMARY KEY AUTOINCREMENT` |
-| 大整數 | `BIGINT` (無顯示寬度語法) | `BIGINT(11)`(可加顯示寬度,MySQL 8.0後已棄用顯示寬度但仍常見於舊範例) | `INTEGER` |
-| 布林值 | `BOOLEAN` | `TINYINT(1)`(MySQL無原生布林,慣用TINYINT(1)模擬) | `BOOLEAN`(內部仍存為INTEGER) |
-| 日期時間 | `TIMESTAMP` / `TIMESTAMPTZ`(建議帶時區) | `DATETIME` | `TEXT`/`NUMERIC`(依儲存慣例) |
-| 外鍵語法 | `REFERENCES 資料表(欄位)` | `FOREIGN KEY ... REFERENCES ...` | `REFERENCES 資料表(欄位)` |
+| 概念         | PostgreSQL                                                          | MySQL                                                                  | SQLite                                |
+| ------------ | ------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------- |
+| 主鍵自動遞增 | `SERIAL` / `BIGSERIAL`(或`IDENTITY`)                          | `INT`/`BIGINT` + `AUTO_INCREMENT`                                | `INTEGER PRIMARY KEY AUTOINCREMENT` |
+| 大整數       | `BIGINT(11)` (雖然PostgreSQL無顯示寬度語法，但老師希望文件上要寫) | `BIGINT(11)`(可加顯示寬度,MySQL 8.0後已棄用顯示寬度但仍常見於舊範例) | `INTEGER`                           |
+| 布林值       | `BOOLEAN`                                                         | `TINYINT(1)`(MySQL無原生布林,慣用TINYINT(1)模擬)                     | `BOOLEAN`(內部仍存為INTEGER)        |
+| 日期時間     | `TIMESTAMP` / `TIMESTAMPTZ`(建議帶時區)                         | `DATETIME`                                                           | `TEXT`/`NUMERIC`(依儲存慣例)      |
+| 外鍵語法     | `REFERENCES 資料表(欄位)`                                         | `FOREIGN KEY ... REFERENCES ...`                                     | `REFERENCES 資料表(欄位)`           |
 
 **這張表是給Claude查詢用的工具,不是要你把整張表塞進文件裡**——生成文件時,只依專題實際使用的那一種資料庫,把對應語法填進關連結構表格,不要把其他資料庫的語法也寫進去,也不要不假思索照抄`database_design_rules.md`裡舊有的`BIGINT(11)`、`AI`這類字面範例(那些是修正前遺留的MySQL寫法,若在生成過程中不小心看到舊版skill包裡殘留的範例文字,一律以本表為準重新核對)。
