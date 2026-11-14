@@ -18,8 +18,7 @@ templates/114_SA.docx
 # 歷屆優秀範例(非自己原創,透過指導教授取得,不公開分享)
 # 這份檔案在skill包裡有實際內容,幫助Claude對照真實案例生成內容,
 # 但版權/隱私屬於原作團隊,不上傳public repo
-examples/*.pdf
-examples/*.docx
+examples/Beaton_音樂祭平台_參考範例.pdf
 
 # 編輯器/IDE雜訊
 .vscode/
